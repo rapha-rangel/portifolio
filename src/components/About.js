@@ -1,3 +1,4 @@
+import { useContext } from "react";
 import {AboutSection, 
 				AboutTitle, 
 				AboutSubtitle, 
@@ -10,11 +11,13 @@ import {AboutSection,
 				AboutButton,
 				Button, 
 				ButtonIcon} 
-	from "./styled";
+	from "./AboutStyle";
 	import { BsDownload} from "react-icons/bs";
+	import Context from "./Context";
 
+const About =()=>{
+	const [darkMode] = useContext(Context);
 
-const About =({darkMode})=>{
   return(
 		<AboutSection id="about">
 			<AboutTitle className="section__title">About Me</AboutTitle>

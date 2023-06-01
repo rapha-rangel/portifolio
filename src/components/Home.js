@@ -9,12 +9,14 @@ import {Button, HomeSection,
 	HomeSubtitle, 
 	HomeTitle, 
 	ButtonIcon} 
-from "./styled";
-
+from './HomeStyle';
+import { useContext} from "react";
+import Context from "./Context";
 import { BiMailSend } from "react-icons/bi";
-
 import Dog from './imagens/dog.jpg';
-const Home = ({darkMode})=>{
+
+const Home = ()=>{
+	const [darkMode] = useContext(Context);
 	
   return (
 		<HomeSection id="home">

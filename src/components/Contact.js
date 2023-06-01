@@ -7,14 +7,11 @@ import {ContactContainer,
 				ContactInformationTitle, 
 				ContactInformationSubtitle,
 				ContactContent
-	} from "./styled";
+	} from "./ContactStyle";
 import {BsWhatsapp} from "react-icons/bs";
 import {MdOutlineMailOutline } from "react-icons/md";
 import { SlSocialLinkedin} from "react-icons/sl";
 import { FiGithub } from "react-icons/fi";
-
-
-
 
 const Contact =()=>{
 	return (

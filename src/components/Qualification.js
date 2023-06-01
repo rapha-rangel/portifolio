@@ -16,12 +16,13 @@ import {QualificationButton,
 				QualificationPointer,
 				QualificationGraduationContent,
 				QualificationCourseContent
-	} from "./styled";
+	} from "./QualificationStyle";
 import { SlGraduation, SlCalender } from "react-icons/sl";
 import { HiOutlineComputerDesktop } from "react-icons/hi2";
-import { useState } from "react";
+import { useState} from "react";
 
 const Qualification =()=>{
+
 	const [showGraduation, setShowGraduation]= useState(false);
 	const [showCourse, setShowCourse]= useState(false);
 	

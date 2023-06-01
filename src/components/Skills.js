@@ -12,15 +12,19 @@ import {SkillsArrows,
 				SkillsSection, 
 				SkillsSubtitle, 
 				SkillsTitle } 
-	from "./styled"
+	from "./SkillsStyle"
 import { BsBraces, BsFillBootstrapFill } from "react-icons/bs";
 import { TbArrowBadgeDown } from "react-icons/tb";
 import { AiOutlineHtml5 } from "react-icons/ai";
 import { IoLogoCss3, IoLogoJavascript, IoLogoNodejs, IoLogoSass} from "react-icons/io";
 import { IoLogoReact } from "react-icons/io5";
 import {SiStyledcomponents, SiRedux, SiMui, SiTailwindcss, SiReactrouter } from "react-icons/si";
+import Context from "./Context";
+import { useContext } from "react";
 
-const Skills = ({darkMode})=>{
+const Skills = ()=>{
+	const [darkMode] = useContext(Context);
+
   return (
 		<SkillsSection id="skills">
 			<SkillsTitle className="section__title">Skills</SkillsTitle>

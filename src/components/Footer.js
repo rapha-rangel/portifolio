@@ -3,14 +3,8 @@ import {FooterSection,
 				FooterContainer, 
 				FooterSubtitle, 
 				FooterTitle,
-				FooterLink,
-				FooterLinks,
-				FooterSocilas,
-				FooterSocial
-	} from "./styled";
+	} from "./FooterStyle";
 
-import { SlSocialLinkedin} from "react-icons/sl";
-import { FiGithub, FiInstagram } from "react-icons/fi";
 
 const Footer =({darkMode})=>{
 	return (

@@ -15,20 +15,18 @@ import {PortifolioContainer,
 				PortifolioImageSkills,
 				PortifolioImageContent,
 				PortifolioImageOverlay
-	} from "./styled";
+	} from "./PortifolioStyle";
 
-	import {HiOutlineArrowCircleRight, 
-					HiOutlineArrowNarrowLeft, 
-					HiOutlineArrowNarrowRight } 
-		from "react-icons/hi";
-		import {IoLogoCss3, 
-						IoLogoJavascript, 
-						IoLogoNodejs, 
-						IoLogoSass} 
-		from "react-icons/io";
-
-	
-	import { useRef } from "react";
+import {HiOutlineArrowCircleRight, 
+				HiOutlineArrowNarrowLeft, 
+				HiOutlineArrowNarrowRight } 
+from "react-icons/hi";
+import {IoLogoCss3, 
+					IoLogoJavascript, 
+					IoLogoNodejs, 
+					IoLogoSass} 
+from "react-icons/io";
+import { useRef } from "react";
 
 
 const Portifolio = ()=>{

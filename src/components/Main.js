@@ -5,16 +5,16 @@ import Qualification from './Qualification'
 import Portifolio from './Portifolio'
 import Contact from './Contact'
 
-const Main = ({darkMode})=>{
+const Main = ()=>{
 	
 	return(
 		<>
-			<Home darkMode={darkMode}/>
-			<About darkMode={darkMode}/>
-			<Skills darkMode={darkMode}/>
+			<Home/>
+			<About/>
+			<Skills/>
 			<Qualification/>
 			<Portifolio/>
-			<Contact darkMode={darkMode}/>
+			<Contact/>
 		</>
 	)
 }

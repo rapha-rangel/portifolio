@@ -1,4 +1,4 @@
-import { ScrollButton, ScrollSection } from "./styled";
+import { ScrollButton, ScrollSection } from "./ScrollUpStyle";
 import { BsArrowUpShort} from "react-icons/bs";
 
 const ScrollUp = ({showScrollUp})=>{

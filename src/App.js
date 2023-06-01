@@ -2,8 +2,10 @@ import Navbar from './components/Navbar';
 import Main from './components/Main';
 import Footer from './components/Footer';
 import ScrollUp from './components/ScrollUp';
-import { useState, useEffect } from 'react';
-import {GlobalStyle} from './components/styled'
+import { useState, useEffect} from 'react';
+import {GlobalStyle} from './components/styled';
+import Context from './components/Context';
+
 
 function App() {
   const [headerBoxShadow, setHeaderBoxShadow] = useState(false);
@@ -49,15 +51,20 @@ function App() {
   }, []);
 
   return (
-    <>
-    <GlobalStyle darkMode={darkMode}/>
-      <>
-        <Navbar headerBoxShadow={headerBoxShadow} darkMode={darkMode} showHeader={showHeader} setDarkMode={setDarkMode}/>
-        <Main darkMode={darkMode}/>
-        <Footer darkMode={darkMode}/>
-        <ScrollUp showScrollUp={showScrollUp}/>
-      </>
-    </>
+    <Context.Provider value={[darkMode, setDarkMode]}>
+      <GlobalStyle darkMode={darkMode}/>
+          <Navbar 
+            headerBoxShadow={headerBoxShadow} 
+            showHeader={showHeader} 
+          />
+          <Main/>
+          <Footer 
+            darkMode={darkMode}
+          />
+          <ScrollUp 
+            showScrollUp={showScrollUp}
+          />
+    </Context.Provider>
   );
 }
 

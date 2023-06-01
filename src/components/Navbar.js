@@ -17,14 +17,18 @@ import {Header,
 				NavClose,
 				NavIcon,
 				ChangeIcon } 
-	from "./styled";
-	import {  useState } from "react";
+	from "./NavbarStyle";
+	import {  useState, useContext} from "react";
+	import Context from "./Context";
 
-const Navbar = ({headerBoxShadow, darkMode, setDarkMode, showHeader}) =>{
+
+const Navbar = ({headerBoxShadow, showHeader}) =>{
 	const moon = <BsMoonStars/>;
-	const sun=  <BsSun/>;
+	const sun =  <BsSun/>;
 	const [showMenu, setShowMenu] = useState(false);
 	const [changeMode, setChangeMode] = useState(moon);
+
+	const [darkMode, setDarkMode] = useContext(Context);
 	
 	const handleDarkMode = ()=>{
 		setDarkMode(prevState=>!prevState)
@@ -38,12 +42,10 @@ const Navbar = ({headerBoxShadow, darkMode, setDarkMode, showHeader}) =>{
 
 	const handleMenuOpen = ()=>{
 		setShowMenu(true)
-		console.log(showMenu)
 	}
 
 	const handleMenuClose = ()=>{
 		setShowMenu(false)
-		console.log(showMenu)
 	}
 
   return (
@@ -95,7 +97,6 @@ const Navbar = ({headerBoxShadow, darkMode, setDarkMode, showHeader}) =>{
 						</NavApps>
 					</div>
 				</div>
-				
 			</Nav>
 		</Header>
   )
