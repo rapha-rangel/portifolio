@@ -1,13 +1,57 @@
-import styled, {keyframes} from "styled-components";
-import {responsive, root} from './styled';
+import styled, {keyframes, css} from "styled-components";
+import {responsive, root, moveLeft, moveRight} from './styled';
 
 export const PortifolioSection = styled.section`
 `
 export const PortifolioTitle = styled.h2`
+	overflow-x: auto;
+	position: relative;
+	::-webkit-scrollbar{
+		display: none;
+	}
+	@media ${responsive.large} {
+		font-size: ${root.bigFontSize};
+	}
+	@media ${responsive.exLarge} {
+		${(props) =>{ 
+			if(props.portifolioAnimation){
+				return css`
+				animation: ${moveLeft} 2s;
+				`
+			}else{
+				return css`
+				animation: none;
+				`
+			}
+		}}
+	}
 `
 export const PortifolioSubtitle = styled.span`
+	overflow-x: auto;
+	position: relative;
+	::-webkit-scrollbar{
+		display: none;
+	}
+	position: relative;
+	@media ${responsive.large} {
+		font-size: ${root.h3FontSize};
+	}
+	@media ${responsive.exLarge} {
+		${(props) =>{ 
+			if(props.portifolioAnimation){
+				return css`
+				animation: ${moveRight} 2s;
+				`
+			}else{
+				return css`
+				animation: none;
+				`
+			}
+		}}
+	}
 `
 export const PortifolioContainer = styled.div`
+	position: relative;
 	overflow-x: auto;
 	display: flex;
 	transition: 3s;
@@ -15,18 +59,34 @@ export const PortifolioContainer = styled.div`
 	::-webkit-scrollbar{
 		display: none;
 	}
+	@media ${responsive.exLarge} {
+		${(props) =>{ 
+			if(props.portifolioAnimation){
+				return css`
+				animation: ${moveRight} 2s;
+				`
+			}else{
+				return css`
+				animation: none;
+				`
+			}
+		}}
+	}
 `
 export const PortifolioContent = styled.div`
-	width: 1028px;
+	width: 2560px;
 	padding: 0 1.5rem;
 	@media ${responsive.small}{
 		display: grid;
 		justify-content: center;
-		row-gap:1rem;
+		justify-items: center;
+		row-gap: 1.5rem;
 	}
 	@media ${responsive.large}{
 		display: flex;
 		column-gap: 3rem ;
+		justify-content: center;
+		align-items: center;
 	}
 `
 export const inLine = keyframes`
@@ -39,76 +99,107 @@ export const inLineText = keyframes`
 	from   
 	{ left:0; top:50%; opacity:1;}
 	to
- 	{left:30%; top:50%; opacity:1;}
-`
-export const inColumnText = keyframes`
-	from   
-	{ left:0; top:10%; opacity:1;}
-	to
-	{left:40%; top:10%; opacity:1;}
+ 	{left:15%; top:50%; opacity:1;}
 `
 export const PortifolioImageContent = styled.div`
 	position: relative;
-	width:  100%;
-	height: 200px;
-	cursor: pointer;
+	justify-self: center;
+	object-fit: contain;
+	@media ${responsive.small} {
+		width:  160px;
+		height: 100px;
+	}
+	@media ${responsive.medium} {
+		width: 300px;
+		height: 150px;
+	}
+	@media ${responsive.large} {
+		height: 200px;
+		width: 300px;
+	}
+	@media ${responsive.exLarge} {
+		width: 400px;
+	}
 `
 export const PortifolioImage = styled.img`
-	height: 200px;
-	width: 100%;
+	align-self: center;
 	justify-self: center;
-	object-fit: cover;
-	border-radius: 10%;
+	object-fit: contain;
 	:hover {
 		opacity: 0.3;
 	}
+	@media ${responsive.small} {
+		width:  160px;
+		height: 100px;
+	}
+	@media ${responsive.medium} {
+		width: 300px;
+		height: 150px;
+	}
+	@media ${responsive.large} {
+		height: 200px;
+		width: 300px;
+	}
+	@media ${responsive.exLarge} {
+		width: 400px;
+	}
 `
 export const PortifolioImageOverlay =styled.div`
-  position: absolute;
-  top: 0;
+	position: absolute;
   bottom: 0;
-  left: 0;
-  right: 0;
-  height: 100%;
-  width: 100%;
   opacity: 0;
-	border-radius: 10%;
+	width: 100%;
+	height: 100%;
+	border-radius: 5%;
   background-color: #c1b6fc;
 	${PortifolioImageContent}:hover & {
 		animation: ${inLine} 0.8s linear forwards;
 	}
+	@media ${responsive.exLarge} {
+	}
 `
 export const PortifolioImageSkills = styled.a`
-  position: absolute;
+  position: relative;
 	display: flex;
 	opacity: 0;
-	left:0; 
-	top:0;
 	color: white;
 	font-weight: 900;
-	font-size: 2rem;
 	${PortifolioImageContent}:hover & {
 		animation: ${inLineText} 0.8s linear forwards;
 		opacity: 1;
 	}
 	@media ${responsive.small}{
-		flex-direction: column;
 		gap: 0.5rem;
-		${PortifolioImageContent}:hover & {
-		animation: ${inColumnText} 0.8s linear forwards;
-		}
+		font-size: 1.5rem;
+	}
+	@media ${responsive.medium}{
+		gap: 1rem;
+		font-size: 2rem;
 	}
 		@media ${responsive.large}{
-		flex-direction: row;
-		gap: 1rem;
-		${PortifolioImageContent}:hover & {
-		animation: ${inLineText} 0.8s linear forwards;
-		}
+			font-size: 2rem;
+			gap: 1rem;
+	}
+	@media ${responsive.exLarge}{
+			font-size: 3rem;
+			gap: 2rem;
+			margin-left: -1rem;
 	}
 `
 export const PortifolioData = styled.div`
-	@media ${responsive.medium}{
-		align-self: center;
+	align-self: center;
+	max-width: 250px;
+	align-self: center;
+	text-align: justify;
+	@media ${responsive.large} {
+		max-width: 200px;
+    margin-left: 1rem;
+    margin-right: 1rem;
+	}
+	@media ${responsive.exLarge} {
+		max-width: 300px;
+    margin-left: 1rem;
+    margin-right: 1rem;
 	}
 `
 export const PortifolioDataTitle = styled.h3`
@@ -117,9 +208,18 @@ export const PortifolioDataTitle = styled.h3`
 	@media ${responsive.small} {
 		font-size: ${root.normalFontSize}
 	}
+	@media ${responsive.exLarge} {
+		font-size: ${root.h2FontSize}
+	}
 `
 export const PortifolioDataDescription = styled.p`
 	margin-bottom: ${root.mb075};
+	@media ${responsive.small} {
+		font-size: ${root.smallFontSize}
+	}
+	@media ${responsive.exLarge} {
+		font-size: ${root.h3FontSize}
+	}
 `
 export const PortifolioDataButton = styled.a`
 	cursor: pointer;
@@ -144,6 +244,9 @@ export const PortifolioDataButtonIcon = styled.i`
 	}
 	@media ${responsive.small} {
 		font-size: ${root.normalFontSize}
+	}
+	@media ${responsive.exLarge} {
+		font-size: ${root.h3FontSize}
 	}
 `
 export const PortifolioArrowContent =styled.div`

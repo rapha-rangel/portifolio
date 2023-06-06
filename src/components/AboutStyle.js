@@ -1,13 +1,52 @@
-import styled from "styled-components";
-import {responsive, root, darkTheme} from './styled';
+import styled, { css } from "styled-components";
+import {responsive, root, moveTop} from './styled';
 
 export const AboutSection = styled.section`
+	
 `
 export const AboutTitle = styled.h2`
+position: relative;
+
+	@media ${responsive.large} {
+		font-size: ${root.bigFontSize};
+	}
+	@media ${responsive.exLarge} {
+		${(props) =>{ 
+			if(props.aboutAnimation){
+				return css`
+				animation: ${moveTop} 2s;
+				`
+			}else{
+				return css`
+				animation: none;
+				`
+			}
+		}}
+	}
 `
-export const AboutSubtitle = styled.span`
+export const AboutSubtitle = styled.p`
+position: relative;
+
+	@media ${responsive.large} {
+		font-size: ${root.h3FontSize};
+	}
+	@media ${responsive.exLarge} {
+		${(props) =>{ 
+			if(props.aboutAnimation){
+				return css`
+				animation: ${moveTop} 2s;
+				`
+			}else{
+				return css`
+				animation: none;
+				`
+			}
+		}}
+	}
 `
 export const AboutContainer = styled.div`
+
+
 `
 export const AboutData = styled.div`
 	@media ${responsive.small} {
@@ -29,53 +68,53 @@ export const AboutData = styled.div`
 	}
 `
 export const AboutDescription = styled.p`
+	position: relative;
 	text-align: justify;
 	margin-bottom: ${root.mb1};
 	grid-area: description;
+	font-size: ${root.smallerFontSize};
 	@media ${responsive.medium} {
 		margin-bottom: ${root.mb1};
 		display: flex;
     align-items: center;
-	}
-`
-export const AboutInfo = styled.div`
-	@media ${responsive.small} {
-		display: flex;
-		flex-direction: row;
-		margin-bottom: ${root.mb1};
-		justify-content: space-evenly;
-	}
-	@media ${responsive.medium} {
-		grid-area: info;
-		display: flex;
-		flex-direction: column;
-		margin-bottom: 0;
-		gap: 1rem;
+		font-size: ${root.smallFontSize};
 	}
 	@media ${responsive.large} {
-		display: flex;
-		flex-direction: row;
-		margin-bottom: ${root.mb1};
-		justify-content: space-evenly;
+		font-size: ${root.h3FontSize};	
+	}
+	@media ${responsive.exLarge} {
+		${(props) =>{ 
+			if(props.aboutAnimation){
+				return css`
+				animation: ${moveTop} 2s;
+				`
+			}else{
+				return css`
+				animation: none;
+				`
+			}
+		}}
 	}
 `
-export const AboutInfoTitle = styled.span`
-	font-size: ${root.h2FontSize};
-	font-weight: ${root.fontSemiBold};
-	display: block;
-	text-align: center;
-	color: ${props=> props.darkMode ? darkTheme.titleColor : root.titleColor};
-`
-export const AboutInfoName = styled.span`
-	font-size: ${root.smallerFontSize};
-	display: block;
-	text-align: center;
-`
 export const AboutButton = styled.div`
+	position: relative;
 	display: flex;
 	justify-content: center;
 	align-items: flex-start;
 	grid-area: button;
+	@media ${responsive.exLarge} {
+		${(props) =>{ 
+			if(props.aboutAnimation){
+				return css`
+				animation: ${moveTop} 2s;
+				`
+			}else{
+				return css`
+				animation: none;
+				`
+			}
+		}}
+	}
 `
 export const Button = styled.a`
 	display: inline-block;

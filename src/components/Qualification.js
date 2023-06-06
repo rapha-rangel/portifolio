@@ -19,12 +19,28 @@ import {QualificationButton,
 	} from "./QualificationStyle";
 import { SlGraduation, SlCalender } from "react-icons/sl";
 import { HiOutlineComputerDesktop } from "react-icons/hi2";
-import { useState} from "react";
+import { useState, useEffect} from "react";
 
 const Qualification =()=>{
 
 	const [showGraduation, setShowGraduation]= useState(false);
 	const [showCourse, setShowCourse]= useState(false);
+	const [qualificationAnimation, setQualificationAnimation] = useState(false);
+
+	useEffect(()=>{
+		const moveQualificationAnimation = ()=>{
+			if(window.scrollY > 2100){
+				setQualificationAnimation(true)
+			} else  {
+				setQualificationAnimation(false)			
+			}
+		console.log(window.scrollY, qualificationAnimation)
+		}
+		window.addEventListener('scroll', moveQualificationAnimation);
+		return () =>{
+			window.removeEventListener('scroll', moveQualificationAnimation);
+		}
+	},[])
 	
 	const handleGraduation = ()=>{
 		setShowGraduation(prevState =>!prevState)
@@ -37,23 +53,23 @@ const Qualification =()=>{
 	}
 
 	return(
-		<QualificationSection id="services">
-			<QualificationTitle className="section__title">Qualification</QualificationTitle>
-			<QualificationSubtitle className="section__subtitle">My Personal Journey</QualificationSubtitle>
+		<QualificationSection id="qualification" className="section">
+			<QualificationTitle className="section__title" qualificationAnimation={qualificationAnimation}>Qualificações</QualificationTitle>
+			<QualificationSubtitle className="section__subtitle"qualificationAnimation={qualificationAnimation}>Minha jornada pessoal</QualificationSubtitle>
 			<QualificationContainer className="container">
 				<QualificationTabs>
-					<QualificationButton className="button--flex" onClick={handleGraduation}>
-						<QualificationIcon><SlGraduation/>Graduation</QualificationIcon>
+					<QualificationButton className="button--flex" qualificationAnimation={qualificationAnimation} onClick={handleGraduation}>
+						<QualificationIcon><SlGraduation/>Graduação</QualificationIcon>
 					</QualificationButton>
-					<QualificationButton className="button--flex" onClick={handleCourse}>
-						<QualificationIcon><HiOutlineComputerDesktop/>Course</QualificationIcon>
+					<QualificationButton className="button--flex" qualificationAnimation={qualificationAnimation} onClick={handleCourse}>
+						<QualificationIcon><HiOutlineComputerDesktop/>Cursos</QualificationIcon>
 					</QualificationButton>
 				</QualificationTabs>
 				<QualificationContent>
 					<QualificationContentInsider>
 						<QualificationData>
 							<div style={{display: "flex", justifyContent: "space-between"}}>
-								<QualificationGraduationContent showGraduation={showGraduation}>
+								<QualificationGraduationContent showGraduation={showGraduation} qualificationAnimation={qualificationAnimation}>
 									<QualificationDataTitle>Analise de Sistemas</QualificationDataTitle>
 									<QualificationDataSubtitle>UCAM - Univesidade Candido Mendes</QualificationDataSubtitle>
 									<QualificationCalendar>
@@ -74,7 +90,7 @@ const Qualification =()=>{
 								<QualificationRounder></QualificationRounder>
 								<QualificationLine></QualificationLine>
 							</QualificationPointer>
-							<QualificationCourseContent showCourse={showCourse}>
+							<QualificationCourseContent showCourse={showCourse} qualificationAnimation={qualificationAnimation}>
 								<QualificationDataTitle>Front End Development Libaries</QualificationDataTitle>
 								<QualificationDataSubtitle>FreeCodeCamp</QualificationDataSubtitle>
 								<QualificationCalendar>
@@ -88,7 +104,7 @@ const Qualification =()=>{
 								<QualificationRounder></QualificationRounder>
 								<QualificationLine></QualificationLine>
 							</QualificationPointer>
-							<QualificationCourseContent showCourse={showCourse}>
+							<QualificationCourseContent showCourse={showCourse} qualificationAnimation={qualificationAnimation}>
 								<QualificationDataTitle>JavaScript </QualificationDataTitle>
 								<QualificationDataSubtitle>FreeCodeCamp</QualificationDataSubtitle>
 								<QualificationCalendar>
@@ -101,7 +117,7 @@ const Qualification =()=>{
 							<QualificationPointer>
 								<QualificationRounder></QualificationRounder>
 							</QualificationPointer>
-							<QualificationCourseContent showCourse={showCourse}>
+							<QualificationCourseContent showCourse={showCourse} qualificationAnimation={qualificationAnimation}>
 								<QualificationDataTitle>Web Design</QualificationDataTitle>
 								<QualificationDataSubtitle>FreeCodeCamp</QualificationDataSubtitle>
 								<QualificationCalendar>

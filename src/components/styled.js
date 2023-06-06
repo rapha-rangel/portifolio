@@ -1,4 +1,4 @@
-import {createGlobalStyle} from "styled-components";
+import {createGlobalStyle, keyframes} from "styled-components";
 
 export const root ={
   headerHeigth: "3rem",
@@ -49,7 +49,7 @@ export const responsive ={
 	small: "(min-width: 320px)",
 	medium: "(min-width: 568px)",
 	large: "(min-width: 768px)",
-	exLarge: "(min-width: 1028px)"
+	exLarge: "(min-width: 1060px)"
 }
 /*----------------------DarkThemeColors----------------------------------*/
 export const darkTheme ={
@@ -64,6 +64,9 @@ export const GlobalStyle = createGlobalStyle`
   box-sizing: border-box;
   padding: 0;
   margin: 0;
+	::-webkit-scrollbar{
+		display: none;
+	}
 	}
 	html{
 		scroll-behavior: smooth;
@@ -98,32 +101,11 @@ export const GlobalStyle = createGlobalStyle`
 	i{
 		font-style: normal;
 	}
-	section{
-		padding: 2rem 0 4rem;
-	}
-
-	.section__title{
-		font-size: ${root.h1FontSize};
-	}
-
-	.section__subtitle{
-		display: block;
-		font-size: ${root.smallFontSize};
-		margin-bottom: ${root.mb3};
-	}
-
-	.section__title, 
-	.section__subtitle{
-		text-align: center;
-	}
+	
 	.button--flex{
 		display: inline-flex;
 		align-items: center;
 		gap: .5rem;
-	}
-	.container{
-		margin-left: ${root.mb15};
-		margin-right: ${root.mb15};
 	}
 	.containerNavbar{
 		margin-left: ${root.mb15};
@@ -154,32 +136,94 @@ export const GlobalStyle = createGlobalStyle`
 		}
 	}
 	@media ${responsive.small}{
-		.container{
-			margin-left: ${root.mb1};
-			margin-right: ${root.mb1};
-		}
-		section{
-			padding: 2rem 0 4rem;
-		}
+	.container{
+		margin-left: ${root.mb1};
+		margin-right: ${root.mb1};
+	}
+	.section{
+		padding: 2rem 0 4rem;
+	}
+	.section__title{
+		font-size: ${root.h1FontSize};
+	}
+	.section__subtitle{
+		display: block;
+		font-size: ${root.smallFontSize};
+		margin-bottom: ${root.mb3};
+	}
+	.section__title, 
+	.section__subtitle{
+		text-align: center;
+	}
 	}
 	@media ${responsive.medium}{
-		section{
+		.section{
 			padding: 4rem 0 4rem;
 		}
 	}
 	@media ${responsive.large}{
-		section{
-			padding: 4rem 0 2rem;
+		.section{
+			padding: 4rem 0 6rem;
 		}
+		.container{
+			margin-left: ${root.mb2};
+			margin-right: ${root.mb2};
+		}
+		.section__title{
+			font-size: ${root.bigFontSize};
+		}
+		.section__subtitle{
+		font-size: ${root.normalFontSize};
+	}
 	}
 	@media ${responsive.exLarge}{
 		.container{
 			margin-left: 10%;
 			margin-right: 10%;
 		}
-		section{
-			padding: 6rem 0 2rem;
+		.section{
+			padding: 10rem 0 10rem;
 		}
 	}
 `
+export const moveLeft = keyframes`
+	0%{
+		left: -10rem;
+		opacity: 0;
+	}
+	100%{
+		left: 0rem;
+		opacity: 1;
+	}
+`
+export const moveRight = keyframes`
+	0%{
+		left: 10rem;
+		opacity: 0;
+	}
+	100%{
+		left: 0;
+		opacity: 1;
+	}
+`
+export const moveTop = keyframes`
+	0%{
+		top: -20rem;
+		opacity: 0;
+	}
+	100%{
+		top: 0;
+		opacity: 1;
+	}
+`
 
+export const moveBottom = keyframes`
+	0%{
+		top: 20rem;
+		opacity: 0;
+	}
+	100%{
+		top: 0;
+		opacity: 1;
+	}
+`

@@ -26,23 +26,30 @@ export const ContactInformation= styled.a`
 export const ContactInformationTitle = styled.h3`
 	font-size: ${root.h3FontSize};
 	font-weight: ${root.fontMedium};
+	@media ${responsive.exLarge} {
+		font-size: ${root.h1FontSize};
+	}
 `
 export const ContactInformationSubtitle = styled.span`
 	font-size: ${root.smallFontSize};
 	color: ${root.textColorLight};
+	@media ${responsive.exLarge} {
+		font-size: ${root.h3FontSize};
+	}
 `
 export const ContactIcon= styled.i`
 	color: ${root.firstColor};
-	@media ${responsive.small} {
-		font-size: 1.5rem;
-		margin-right: ${root.mb075};
-	}
+	font-size: 1.5rem;
+	margin-right: ${root.mb075};
 	@media ${responsive.medium} {
 		font-size: 2rem;
 		margin-right: 0;
 	}
 	@media ${responsive.large} {
 		font-size: 3rem;
+	}
+	@media ${responsive.exLarge} {
+		font-size: 3.5rem;
 	}
 `
 export const ContactContent= styled.div`

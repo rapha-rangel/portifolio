@@ -58,9 +58,7 @@ function App() {
             showHeader={showHeader} 
           />
           <Main/>
-          <Footer 
-            darkMode={darkMode}
-          />
+          <Footer/>
           <ScrollUp 
             showScrollUp={showScrollUp}
           />

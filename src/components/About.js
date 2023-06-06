@@ -1,46 +1,48 @@
-import { useContext } from "react";
+import { useContext, useEffect, useState } from "react";
 import {AboutSection, 
 				AboutTitle, 
 				AboutSubtitle, 
 				AboutContainer, 
 				AboutData, 
 				AboutDescription, 
-				AboutInfo, 
-				AboutInfoTitle, 
-				AboutInfoName,
 				AboutButton,
 				Button, 
 				ButtonIcon} 
 	from "./AboutStyle";
 	import { BsDownload} from "react-icons/bs";
-	import Context from "./Context";
-
 const About =()=>{
-	const [darkMode] = useContext(Context);
+	const [aboutAnimation, setAboutAnimation] = useState(false);
+
+	useEffect(()=>{
+		const moveAboutAnimation = ()=>{
+			if(window.scrollY > 400){
+				setAboutAnimation(true)
+			} else  {
+				setAboutAnimation(false)
+			}
+		}
+		window.addEventListener('scroll', moveAboutAnimation);
+		return () =>{
+			window.removeEventListener('scroll', moveAboutAnimation);
+		}
+	},[])
 
   return(
-		<AboutSection id="about">
-			<AboutTitle className="section__title">About Me</AboutTitle>
-			<AboutSubtitle className="section__subtitle">My Introducion</AboutSubtitle>
+		<AboutSection id="about" className="section" >
+			<AboutTitle className="section__title" aboutAnimation={aboutAnimation}>Sobre Mim</AboutTitle>
+			<AboutSubtitle className="section__subtitle" aboutAnimation={aboutAnimation} >Um pouco mais sobre Raphael</AboutSubtitle>
 			<AboutContainer className="container grid">
 				<AboutData>
-					<AboutDescription>Frontend Developer Junior, com grande vontade de aprender e produzir o seu melhor</AboutDescription>
-					<AboutInfo>
-						<div>
-							<AboutInfoTitle darkMode={darkMode}>08+</AboutInfoTitle>
-							<AboutInfoName>Completed <br/> project</AboutInfoName>
-						</div>
-						<div>
-							<AboutInfoTitle darkMode={darkMode}>01+</AboutInfoTitle>
-							<AboutInfoName>Years <br/> experience</AboutInfoName>
-						</div>
-						<div>
-							<AboutInfoTitle darkMode={darkMode}>05+</AboutInfoTitle>
-							<AboutInfoName>Name <br/> transtor</AboutInfoName>
-						</div>
-					</AboutInfo>
-					<AboutButton>
-						<Button download href="/pdf/CV_Raphael_Rangel.pdf" className="button--flex">
+					<AboutDescription aboutAnimation={aboutAnimation}>Analista de sistemas em formação buscando novos desafios como desenvolvedor Front-end. 
+						Entusiasta em soft skills, movido a aprendizado contínuo, com foco em React.js, Next.js, Redux, JavaScript, 
+						Styled Components, Material UI e consumo de APIs REST. Habilidades para trabalho em grupo, pensamento crítico, 
+						compreensão de problemas, proposição de soluções e manuseio responsável de informações. Atualmente busca por 
+						oportunidades no mercado como desenvolvedor a fim de alcançar o nível Full Stack. Busca agregar os aprendizados e 
+						experiências adquiridas ao longo da vida profissional como Engenheiro de Produção e especialista em Logística 
+						empresarial e Negócios Internacionais. 
+					</AboutDescription>
+					<AboutButton aboutAnimation={aboutAnimation}>
+						<Button download href="/pdf/CV_Raphael_Rangel.pdf" className="button--flex" >
 							<ButtonIcon>Download CV <BsDownload/></ButtonIcon>
 						</Button>
 					</AboutButton>

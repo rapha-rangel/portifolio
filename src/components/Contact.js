@@ -15,9 +15,9 @@ import { FiGithub } from "react-icons/fi";
 
 const Contact =()=>{
 	return (
-		<ContactSection id="contact">
-			<ContactTitle className="section__title">Contact Me</ContactTitle>
-			<ContactSubtitle className="section__subtitle">Get in Touch</ContactSubtitle>
+		<ContactSection id="contact" className="section">
+			<ContactTitle className="section__title">Contate-Me</ContactTitle>
+			<ContactSubtitle className="section__subtitle">Quando quiser tomar um café e conversar...</ContactSubtitle>
 			<ContactContainer className="container grid">
 				<ContactContent>
 					<ContactInformation href="https://web.whatsapp.com/send?phone=5522998402009" target="_blank">

@@ -21,21 +21,43 @@ import {HiOutlineArrowCircleRight,
 				HiOutlineArrowNarrowLeft, 
 				HiOutlineArrowNarrowRight } 
 from "react-icons/hi";
+import { IoLogoReact } from "react-icons/io5";
+import {SiStyledcomponents, SiRedux, SiMui, SiTailwindcss, SiReactrouter } from "react-icons/si";
 import {IoLogoCss3, 
 					IoLogoJavascript, 
-					IoLogoNodejs, 
-					IoLogoSass} 
+					IoLogoNodejs} 
 from "react-icons/io";
-import { useRef } from "react";
+import { useRef, useEffect, useState } from "react";
+import pokedex from './imagens/projeto_pokedex.jpg'
+import calculadora from './imagens/projeto_calculadora.jpg';
+import faturamento from './imagens/projeto_faturamento.jpg';
+import livro from './imagens/projeto_livros.jpg';
+import poll from './imagens/Projeto_poll.jpg'
 
 
 const Portifolio = ()=>{
 	const arrow = useRef(null);
+	const [portifolioAnimation, setPortifolioAnimation] = useState(false);
+
+	useEffect(()=>{
+		const movePortifolioAnimation = ()=>{
+			if(window.scrollY > 3000){
+				setPortifolioAnimation(true)
+			} else  {
+				setPortifolioAnimation(false)			
+			}
+		console.log(window.scrollY, portifolioAnimation)
+		}
+		window.addEventListener('scroll', movePortifolioAnimation);
+		return () =>{
+			window.removeEventListener('scroll', movePortifolioAnimation);
+		}
+	},[])
 	
 	const handleArrowLeft =(e)=>{
 		e.preventDefault();
 		if(arrow.current.scrollLeft === 0){
-			arrow.current.scrollLeft = arrow.current.offsetWidth*2
+			arrow.current.scrollLeft = arrow.current.offsetWidth*4.1
 		}else{
 			arrow.current.scrollLeft -= arrow.current.offsetWidth
 		}
@@ -44,7 +66,7 @@ const Portifolio = ()=>{
 
 	const handleArrowRight =(e)=>{
 		e.preventDefault();
-		if(arrow.current.scrollLeft > arrow.current.offsetWidth*1.9){
+		if(arrow.current.scrollLeft > arrow.current.offsetWidth*3.1){
 			arrow.current.scrollLeft = 0
 		}else{
 			arrow.current.scrollLeft += arrow.current.offsetWidth
@@ -54,35 +76,84 @@ const Portifolio = ()=>{
 
 
 	return (
-		<PortifolioSection id="portifolio">
-			<PortifolioTitle className="section__title">Portifolio</PortifolioTitle>
-			<PortifolioSubtitle className="section__subtitle">Most Recent Work</PortifolioSubtitle>
-			<div style={{display: "flex"}} className="container">
+		<PortifolioSection id="portifolio" className="section">
+			<PortifolioTitle className="section__title" portifolioAnimation={portifolioAnimation}>Portifolio</PortifolioTitle>
+			<PortifolioSubtitle className="section__subtitle" portifolioAnimation={portifolioAnimation}>Meus trabalhos recentes</PortifolioSubtitle>
+			<div style={{display: "flex", marginLeft: "1rem" , marginRight: "1rem"}} >
 			<PortifolioArrowContent>
 			<PortifolioArrowLeft onClick={handleArrowLeft}>  <HiOutlineArrowNarrowLeft/></PortifolioArrowLeft>
 				
 			</PortifolioArrowContent>
 			
-			<PortifolioContainer className="container" ref={arrow} >
+			<PortifolioContainer className="container" ref={arrow} portifolioAnimation={portifolioAnimation}>
 			
-				<div style={{width: "300%", display: "flex"}} >
+				<div style={{width: "500%", display: "flex"}} >
 
-				<PortifolioContent >
+
+			
+				<PortifolioContent>
 					<PortifolioImageContent>
-						<PortifolioImage src="https://i.pinimg.com/564x/5b/2e/e6/5b2ee66fcf721aa46c12d462eab0b091.jpg" alt ="tranks"/>
+						<PortifolioImage src={poll} alt ="Perguntas"/>
 						<PortifolioImageOverlay>
 							<PortifolioImageSkills>
-								<IoLogoCss3/>
-								<IoLogoJavascript/>
-								<IoLogoNodejs/>
-								<IoLogoSass/> 
+								<IoLogoReact/>
+								<SiRedux/>
+								<SiMui/>
+								<SiReactrouter/> 
 							</PortifolioImageSkills>
 						</PortifolioImageOverlay>
 					</PortifolioImageContent>
 					<PortifolioData>
-						<PortifolioDataTitle>Design Master</PortifolioDataTitle>
-						<PortifolioDataDescription>Design Master for all services</PortifolioDataDescription>
-						<PortifolioDataButton className="button--flex">
+						<PortifolioDataTitle>Perguntas</PortifolioDataTitle>
+						<PortifolioDataDescription>Esse projeto o usuario pode responder e gerara novas perguntas, além de acessar quais repostas foram mais escolhidas. Informação retirada do Api da Udacity.</PortifolioDataDescription>
+						<PortifolioDataButton className="button--flex" href="https://github.com/rapha-rangel/employee_polls_udacity" target="_blank">
+							Demo
+							<PortifolioDataButtonIcon >  <HiOutlineArrowCircleRight/></PortifolioDataButtonIcon>
+						</PortifolioDataButton>
+					</PortifolioData>
+				</PortifolioContent>	
+
+
+
+
+				<PortifolioContent>
+					<PortifolioImageContent>
+						<PortifolioImage src={livro} alt ="Armario de Livros"/>
+						<PortifolioImageOverlay>
+							<PortifolioImageSkills>
+								<IoLogoReact/>
+								<IoLogoJavascript/>
+								<IoLogoCss3/>
+								<SiReactrouter/> 
+							</PortifolioImageSkills>
+						</PortifolioImageOverlay>
+					</PortifolioImageContent>
+					<PortifolioData>
+						<PortifolioDataTitle>Armario de Livros</PortifolioDataTitle>
+						<PortifolioDataDescription>Esse armario de livros o usuario pode escolher as opções entre as quais, o livro que quer ler, esta lendo e já leu. Informação retirada do Api da Udacity.</PortifolioDataDescription>
+						<PortifolioDataButton className="button--flex" href="https://github.com/rapha-rangel/my-reads" target="_blank">
+							Demo
+							<PortifolioDataButtonIcon >  <HiOutlineArrowCircleRight/></PortifolioDataButtonIcon>
+						</PortifolioDataButton>
+					</PortifolioData>
+				</PortifolioContent>	
+
+				<PortifolioContent>
+					<PortifolioImageContent>
+							<PortifolioImage src={pokedex} alt ="Pokedex"/>
+						<PortifolioImageOverlay>
+							<PortifolioImageSkills>
+								<IoLogoReact/>
+								<IoLogoJavascript/>
+								<SiStyledcomponents/>
+								<IoLogoNodejs/>
+							</PortifolioImageSkills>
+						</PortifolioImageOverlay>
+					</PortifolioImageContent>
+					<PortifolioData>
+						<PortifolioDataTitle>Pokedex</PortifolioDataTitle>
+						<PortifolioDataDescription>Nessa pokédex o usuário pode pesquisar o pokémon pelo nome e número além de ver suas características. A informação foi retirada do PokéAPI.</PortifolioDataDescription>
+						<PortifolioDataButton className="button--flex" href="https://github.com/rapha-rangel/Pokedex" target="_blank">
 							Demo
 							<PortifolioDataButtonIcon >  <HiOutlineArrowCircleRight/></PortifolioDataButtonIcon>
 						</PortifolioDataButton>
@@ -91,20 +162,20 @@ const Portifolio = ()=>{
 				
 				<PortifolioContent >
 					<PortifolioImageContent>
-						<PortifolioImage src="https://i.pinimg.com/564x/39/aa/f4/39aaf41ff085d836a1a31dbcc9351891.jpg" alt="vegeto"/>
+						<PortifolioImage src={faturamento} alt="Faturamento"/>
 						<PortifolioImageOverlay>
 							<PortifolioImageSkills>
-								<IoLogoCss3/>
+								<IoLogoReact/>
 								<IoLogoJavascript/>
+								<SiStyledcomponents/>
 								<IoLogoNodejs/>
-								<IoLogoSass/> 
 							</PortifolioImageSkills>
 						</PortifolioImageOverlay>
 					</PortifolioImageContent>
 					<PortifolioData>
-						<PortifolioDataTitle>Online Store</PortifolioDataTitle>
-						<PortifolioDataDescription>Most Services for Devices</PortifolioDataDescription>
-						<PortifolioDataButton className="button--flex">
+						<PortifolioDataTitle>Faturamento</PortifolioDataTitle>
+						<PortifolioDataDescription>Projeto onde o usuario diz qual o nome e o valor da ação (dispesa ou receita) e o projeto faz o balanço descrevendo em uma tabela quais são essas ações e o valor de cada uma.</PortifolioDataDescription>
+						<PortifolioDataButton className="button--flex" href="https://github.com/rapha-rangel/faturamento" target="_blank">
 							Demo
 							<PortifolioDataButtonIcon >  <HiOutlineArrowCircleRight/></PortifolioDataButtonIcon>
 						</PortifolioDataButton>
@@ -113,20 +184,20 @@ const Portifolio = ()=>{
 
 				<PortifolioContent >
 					<PortifolioImageContent>	
-						<PortifolioImage src="https://i.pinimg.com/564x/2e/24/3c/2e243c69413dbfcee49a894187407ccf.jpg" alt="picolo"/>
+						<PortifolioImage src={calculadora} alt="Calculadora"/>
 						<PortifolioImageOverlay>
 							<PortifolioImageSkills>
-								<IoLogoCss3/>
+								<IoLogoReact/>
 								<IoLogoJavascript/>
+								<SiTailwindcss/>
 								<IoLogoNodejs/>
-								<IoLogoSass/> 
 							</PortifolioImageSkills>
 						</PortifolioImageOverlay>
 					</PortifolioImageContent>
 					<PortifolioData>
-						<PortifolioDataTitle>Design Master</PortifolioDataTitle>
-						<PortifolioDataDescription>Website Adaptable to all devices</PortifolioDataDescription>
-						<PortifolioDataButton className="button--flex" >
+						<PortifolioDataTitle>Calculadora</PortifolioDataTitle>
+						<PortifolioDataDescription>Projeto Calculadora usando as 4 operações básicas.</PortifolioDataDescription>
+						<PortifolioDataButton className="button--flex" href="https://github.com/rapha-rangel/Calculadora" target="_blank">
 							Demo
 							<PortifolioDataButtonIcon><HiOutlineArrowCircleRight/></PortifolioDataButtonIcon>
 						</PortifolioDataButton>

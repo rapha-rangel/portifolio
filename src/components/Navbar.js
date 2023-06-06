@@ -62,17 +62,17 @@ const Navbar = ({headerBoxShadow, showHeader}) =>{
 							</li>
 							<li className="nav__item">
 								<NavLink href="#about" darkMode={darkMode}>
-									<NavIcon onClick={handleMenuClose}><AiOutlineUser/></NavIcon> About
+									<NavIcon onClick={handleMenuClose}><AiOutlineUser/></NavIcon> Sobre Mim
 								</NavLink>
 							</li>
 							<li className="nav__item">
 								<NavLink href="#skills" darkMode={darkMode}>
-									<NavIcon onClick={handleMenuClose}><AiOutlineFileText/></NavIcon> Skills
+									<NavIcon onClick={handleMenuClose}><AiOutlineFileText/></NavIcon> Habilidades
 								</NavLink>
 							</li>
 							<li className="nav__item">
-								<NavLink href="#services" darkMode={darkMode}>
-									<NavIcon onClick={handleMenuClose}><SlBriefcase/></NavIcon> Services
+								<NavLink href="#qualification" darkMode={darkMode}>
+									<NavIcon onClick={handleMenuClose}><SlBriefcase/></NavIcon> Qualificações
 								</NavLink>
 							</li>
 							<li className="nav__item">
@@ -82,7 +82,7 @@ const Navbar = ({headerBoxShadow, showHeader}) =>{
 							</li>
 							<li className="nav__item">
 								<NavLink href="#contact" darkMode={darkMode}>
-									<NavIcon onClick={handleMenuClose}><BiMailSend/></NavIcon> Contact
+									<NavIcon onClick={handleMenuClose}><BiMailSend/></NavIcon> Contato
 								</NavLink>
 							</li>
 						</NavList>

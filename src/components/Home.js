@@ -2,7 +2,6 @@ import {Button, HomeSection,
 	HomeContainer,
 	HomeContent, 
 	HomeData, 
-	HomeDescription, 
 	HomeImage, 
 	HomeImageContainer, 
 	HomeBlob, 
@@ -13,13 +12,13 @@ from './HomeStyle';
 import { useContext} from "react";
 import Context from "./Context";
 import { BiMailSend } from "react-icons/bi";
-import Dog from './imagens/dog.jpg';
+import Rapha from './imagens/Rapha.jpg'
 
 const Home = ()=>{
 	const [darkMode] = useContext(Context);
 	
   return (
-		<HomeSection id="home">
+		<HomeSection className="section" id="home">
 			<HomeContainer className="container grid" >
 				<HomeContent >
 					<HomeImageContainer>
@@ -37,7 +36,7 @@ const Home = ()=>{
 									129.362C2.45775 97.8511 -7.48481 59.1033 6.67581 34.5279C20.9871 10.1032 59.7028 
 									-0.149132 97.9666 0.00163737C136.23 0.303176 174.193 10.857 190.312 36.4879Z"/>
 
-									<HomeImage className="" x="0" y="0" href={Dog}/>
+									<HomeImage className="" x="-30" y="-50" href={Rapha}/>
 								</g>
 							</svg>
 						</HomeBlob>
@@ -49,11 +48,8 @@ const Home = ()=>{
 						<HomeSubtitle darkMode={darkMode}>
 							Frontend Developer
 						</HomeSubtitle>
-						<HomeDescription>
-							Profissional buscando novos desafios, competencia em JavaScript, ReactJS, HTML e CSS. 
-						</HomeDescription>
 						<Button  href="#contact">
-							<ButtonIcon className="button--flex">Contact Me <BiMailSend/></ButtonIcon>
+							<ButtonIcon className="button--flex">Contate-Me <BiMailSend/></ButtonIcon>
 						</Button>
 					</HomeData>
 				</HomeContent>

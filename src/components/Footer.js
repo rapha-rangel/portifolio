@@ -4,9 +4,11 @@ import {FooterSection,
 				FooterSubtitle, 
 				FooterTitle,
 	} from "./FooterStyle";
+import Context from "./Context";
+import { useContext } from "react";
 
-
-const Footer =({darkMode})=>{
+const Footer =() => {
+	const [darkMode] = useContext(Context);
 	return (
 		<FooterSection>
 			<FooterBg darkMode={darkMode}>

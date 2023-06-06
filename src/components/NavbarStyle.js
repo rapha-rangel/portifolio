@@ -125,7 +125,7 @@ export const NavLink = styled.a`
 		font-size: ${root.h3FontSize};
 	}
 	@media ${responsive.large}{
-		font-size: ${root.h3FontSize};
+		font-size: ${root.normalFontSize};
 		display: ${props => props.home ? "none" : "flex"};
 	}
 	@media ${responsive.exLarge} {

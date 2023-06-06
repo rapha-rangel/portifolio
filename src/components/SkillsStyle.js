@@ -1,14 +1,47 @@
-import styled from "styled-components";
-import {responsive, root} from './styled';
+import styled, {css} from "styled-components";
+import {responsive, root,moveTop, moveBottom, moveLeft, moveRight} from './styled';
 
 export const SkillsSection = styled.section`
 `
 export const SkillsTitle = styled.h2`
-	
+position: relative;
+	@media ${responsive.large} {
+		font-size: ${root.bigFontSize};
+	}
+	@media ${responsive.exLarge} {
+		${(props) =>{ 
+			if(props.skillsAnimation){
+				return css`
+				animation: ${moveLeft} 4s;
+				`
+			}else{
+				return css`
+				animation: none;
+				`
+			}
+		}}
+	}
 `
 export const SkillsSubtitle = styled.span`
+position: relative;
 	font-size: ${root.smallFontSize};
 	color: ${root.textColorLight};
+	@media ${responsive.large} {
+		font-size: ${root.h3FontSize};
+	}
+	@media ${responsive.exLarge} {
+		${(props) =>{ 
+			if(props.skillsAnimation){
+				return css`
+				animation: ${moveRight} 4s;
+				`
+			}else{
+				return css`
+				animation: none;
+				`
+			}
+		}}
+	}
 `
 export const SkillsContainer = styled.div`
 	row-gap: 0;
@@ -21,10 +54,26 @@ export const SkillsHeader = styled.span`
 	display: flex;
 	align-items: center;
 	margin-bottom: ${root.mb25};
+	@media ${responsive.exLarge} {
+		${(props) =>{ 
+			if(props.skillsAnimation){
+				return css`
+				animation: ${moveLeft} 4s;
+				`
+			}else{
+				return css`
+				animation: none;
+				`
+			}
+		}}
+	}
 `
 export const SkillsHeaderTitle = styled.h2`
 	@media ${responsive.small} {
 		font-size: ${root.normalFontSize};
+	}
+	@media ${responsive.large} {
+		font-size: ${root.h3FontSize};
 	}
 `
 export const SkillsIcons = styled.i`
@@ -42,19 +91,48 @@ export const SkillsArrows = styled.i`
 	rotate: -90deg; 
 `
 export const SkillsList = styled.div`
-	grid-template-columns: 1fr 1fr;
+	grid-template-columns: auto auto;
 	row-gap: 1.5rem;
 	@media ${responsive.medium}{
-		grid-template-columns: 1fr 1fr 1fr;
+		grid-template-columns: auto auto auto;
 	}
 	@media ${responsive.large}{
-		grid-template-columns: 1fr 1fr 1fr 1fr;
+		grid-template-columns: auto auto auto auto;
 	}
 	@media ${responsive.exLarge}{
-		grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
+		grid-template-columns: auto auto auto auto auto auto;
 	}
 `
 export const SkillsData = styled.div`
+position: relative;
+@media ${responsive.exLarge} {
+	:nth-child(even){
+		${(props) =>{ 
+			if(props.skillsAnimation){
+				return css`
+				animation: ${moveTop} 2s;
+				`
+			}else{
+				return css`
+				animation: none;
+				`
+			}
+		}}
+	}
+	:nth-child(odd){
+		${(props) =>{ 
+			if(props.skillsAnimation){
+				return css`
+				animation: ${moveBottom} 2s;
+				`
+			}else{
+				return css`
+				animation: none;
+				`
+			}
+		}}
+	}
+	}
 `
 export const SkillsBox = styled.div`
 	background-color: ${root.inputColor};

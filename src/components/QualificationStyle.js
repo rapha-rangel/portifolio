@@ -1,13 +1,45 @@
 import styled, {css} from "styled-components";
-import {responsive, root} from './styled';
+import {responsive, root, moveLeft, moveRight} from './styled';
 
 export const QualificationSection = styled.section`
 `
 export const QualificationTitle = styled.h2`
+	@media ${responsive.large} {
+		font-size: ${root.bigFontSize};
+	}
+	@media ${responsive.exLarge} {
+		${(props) =>{ 
+			if(props.qualificationAnimation){
+				return css`
+				animation: ${moveLeft} 4s;
+				`
+			}else{
+				return css`
+				animation: none;
+				`
+			}
+		}}
+	}
 `
 export const QualificationSubtitle = styled.span`
 	font-size: ${root.smallFontSize};
 	color: ${root.textColorLight};
+	@media ${responsive.large} {
+		font-size: ${root.h3FontSize};
+	}
+	@media ${responsive.exLarge} {
+		${(props) =>{ 
+			if(props.qualificationAnimation){
+				return css`
+				animation: ${moveRight} 4s;
+				`
+			}else{
+				return css`
+				animation: none;
+				`
+			}
+		}}
+	}
 `
 export const QualificationContainer = styled.div`
 `
@@ -23,20 +55,48 @@ export const QualificationButton = styled.div`
 	:hover{
 		color: ${root.firstColor}
 	}
+	@media ${responsive.exLarge} {
+		:nth-child(odd){
+			${(props) =>{ 
+			if(props.qualificationAnimation){
+				return css`
+				animation: ${moveLeft} 4s;
+				`
+			}else{
+				return css`
+				animation: none;
+				`
+			}
+		}}
+	}
+	:nth-child(even){
+		${(props) =>{ 
+			if(props.qualificationAnimation){
+				return css`
+				animation: ${moveRight} 4s;
+				`
+			}else{
+				return css`
+				animation: none;
+				`
+			}
+		}}
+	}
+	}		
 `
 export const QualificationIcon = styled.i`
 	margin-right: ${root.mb025};
 	@media ${responsive.small} {
-		font-size: ${root.smallFontSize};
-	}
-	@media ${responsive.medium} {
 		font-size: ${root.normalFontSize};
 	}
-	@media ${responsive.large} {
+	@media ${responsive.medium} {
 		font-size: ${root.h3FontSize};
 	}
-	@media ${responsive.exLedium} {
+	@media ${responsive.large} {
 		font-size: ${root.h2FontSize};
+	}
+	@media ${responsive.exLarge} {
+		font-size: ${root.h1FontSize};
 	}
 `
 export const QualificationContent = styled.div`
@@ -53,7 +113,10 @@ export const QualificationData = styled.div`
 	display: grid;
 	grid-template-columns: 1fr 1fr;
 	column-gap: 1.5rem;
-	
+	@media ${responsive.large}{
+		margin-left: 20%;
+		margin-right: 20%;
+	}
 `
 export const QualificationDataTitle = styled.h3`
 	@media ${responsive.small}{
@@ -112,6 +175,19 @@ export const QualificationGraduationContent = styled.div`
 			`
 		}
 	}}
+	@media ${responsive.exLarge} {
+			${(props) =>{ 
+			if(props.qualificationAnimation){
+				return css`
+				animation: ${moveLeft} 4s;
+				`
+			}else{
+				return css`
+				animation: none;
+				`
+			}
+		}}
+	}
 `
 export const QualificationCourseContent = styled.div`
 	${(props) =>{
@@ -127,4 +203,17 @@ export const QualificationCourseContent = styled.div`
 			`
 		}
 	}}
+	@media ${responsive.exLarge} {
+			${(props) =>{ 
+			if(props.qualificationAnimation){
+				return css`
+				animation: ${moveRight} 4s;
+				`
+			}else{
+				return css`
+				animation: none;
+				`
+			}
+		}}
+	}
 `
